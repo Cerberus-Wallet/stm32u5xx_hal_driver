@@ -476,7 +476,7 @@ HAL_StatusTypeDef HAL_SD_InitCard(SD_HandleTypeDef *hsd)
   Init.HardwareFlowControl = SDMMC_HARDWARE_FLOW_CONTROL_DISABLE;
 
   /* Init Clock should be less or equal to 400Khz*/
-  sdmmc_clk = HAL_RCCEx_GetPeriphCLKFreq(RCC_PERIPHCLK_SDMMC);
+  sdmmc_clk = HSI48_VALUE;
   if (sdmmc_clk == 0U)
   {
     hsd->State = HAL_SD_STATE_READY;
@@ -2408,7 +2408,7 @@ HAL_StatusTypeDef HAL_SD_ConfigWideBusOperation(SD_HandleTypeDef *hsd, uint32_t 
   }
   else
   {
-    sdmmc_clk = HAL_RCCEx_GetPeriphCLKFreq(RCC_PERIPHCLK_SDMMC);
+    sdmmc_clk = HSI48_VALUE;
     if (sdmmc_clk != 0U)
     {
       /* Configure the SDMMC peripheral */
